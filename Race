@@ -1,0 +1,35 @@
+import re
+
+pattern_name = r"[A-Za-z]+"
+pattern_num = r"\d"
+
+name_list = input().split(", ")
+racers_dict = {}
+while True:
+    data = input()
+    if data == "end of race":
+        break
+    matches_name = re.findall(pattern_name, data)
+    name = ''
+    for index in range(len(matches_name)):
+        name += matches_name[index]
+    if name in name_list:
+        matches_num = [int(num) for num in re.findall(pattern_num, data)]
+        if name not in racers_dict:
+            racers_dict[name] = 0
+        racers_dict[name] += sum(matches_num)
+
+# sorted_dict = sorted(racers_dict.items(), key=lambda x: x[1], reverse=True)
+# print(sorted_dict)
+counter = 0
+for key, value in sorted(racers_dict.items(), key=lambda x: x[1], reverse=True):
+    counter += 1
+    if counter == 1:
+        okon = "st"
+    elif counter == 2:
+        okon = "nd"
+    elif counter == 3:
+        okon = "rd"
+    print(f"{counter}{okon} place: {key}")
+    if counter == 3:
+        break
