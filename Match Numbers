@@ -1,0 +1,9 @@
+import re
+
+number = input()
+pattern = r"(^|(?<=\s))-?\d+(\.\d+)?($|(?=\s))"
+
+match_num = re.finditer(pattern, number)
+
+for mach in match_num:
+    print(mach.group(0), end=" ")
