@@ -1,0 +1,10 @@
+import re
+while True:
+    data = input()
+    if not data:
+        break
+    pattern = r"\d+"
+
+    match = re.finditer(pattern, data)
+    for m in match:
+        print(m.group(0), end=" ")
