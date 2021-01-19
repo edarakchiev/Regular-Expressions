@@ -1,0 +1,11 @@
+import re
+
+pattern = r"www\.[a-zA-Z0-9]+(\-?[a-zA-Z0-9]+)+(\.[a-zA-Z]+)+"
+
+while True:
+    data = input()
+    if not data:
+        break
+    matches = re.finditer(pattern, data)
+    for match in matches:
+        print(match.group())
