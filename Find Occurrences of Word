@@ -1,0 +1,8 @@
+import re
+data = input().lower()
+word = input().lower()
+
+pattern = f"\\b{word}\\b"
+matches = re.finditer(pattern, data)
+match = [m.group() for m in matches]
+print(len(match))
